@@ -44,7 +44,7 @@ def index_page():
 def send_js(path):
     return send_from_directory('js', path)
 @app.route('/css/<path:path>')
-def send_js(path):
+def send_css(path):
     return send_from_directory('css', path)
 
 def get_typeahead(typeahead):
