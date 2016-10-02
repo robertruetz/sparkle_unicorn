@@ -31,13 +31,54 @@ def main():
     # ---------
 
     app.run()
-    print("NOTHING")
-    # app = Flask(__name__)
 
+# region Routes
 
 @app.route('/')
 def index_page():
     return app.send_static_file('index.html')
+
+
+@app.route('/entrypoint')
+def entrypoint():
+    img_files = []
+    for k, v in IMAGETILES.items():
+        img_files.append({"url": v.url, "id": v.id})
+    return json.dumps(img_files)
+
+
+@app.route('/filter', methods=["POST"])
+def filter():
+    data = request.json
+    ids = data.get("ids", None)
+    if ids is None:
+        raise Exception
+    cities = []
+    for i in ids:
+        tile = IMAGETILES.get(i)
+        if tile is None:
+            raise Exception     #TODO: Really? Exception?
+        cities.extend(tile.cities)
+    cities = set(cities)
+
+    # TODO: implement concept matching
+
+    hotels = []
+    concepts = []
+
+    for city in cities:
+        city_part = city.split(',')[0].strip().replace(' ', '_')
+        c = CITYDATACACHE.get(city_part)
+        hotels.extend(c.hotels)
+        for con in c.concepts:
+            concepts.append(con.get("name"))
+    hotels = list(set(hotels[:20]))
+    concepts = list(set(concepts[:20]))
+    response = get_merchandising(data.get("adults"), data.get("children"), data.get("start_date"), data.get("end_date"),
+                                 hotels, concepts=concepts)
+    return json.dumps(response.json())
+
+# endregion
 
 
 def get_typeahead(typeahead):
@@ -60,13 +101,13 @@ def get_destination(destination):
     return response
 
 
-def get_merchandising(adults, children, hotels, get_pricing=False, concepts=None):
+def get_merchandising(adults, children, start_date, end_date, hotels, get_pricing=False, concepts=None):
     url = BASE_URL + "hotels"
     data = {"adults": adults,
             "children": children,
             "rooms": 1,
-            "startDate": utils.get_date_today_string(),
-            "endDate": utils.get_date_today_string(1),
+            "startDate": start_date,
+            "endDate": end_date,
             "hotelProvider": "hotelscombined",
             "concepts": concepts if concepts is not None else [],
             "getPricing": get_pricing,
@@ -75,25 +116,6 @@ def get_merchandising(adults, children, hotels, get_pricing=False, concepts=None
     response = requests.post(url, data=json.dumps(data), headers=HEADERBASE)
     # TODO: Handle response verification
     return response
-
-
-@app.route('/entrypoint')
-def entrypoint():
-    img_files = []
-    for k, v in IMAGETILES.items():
-        img_files.append({"url": v.url, "id": v.id})
-    return json.dumps(img_files)
-
-
-@app.route('/filter', methods=["POST"])
-def filter():
-    data = request.form
-    ids = data.get("ids", None)
-    if ids is None:
-        raise Exception
-    imgs = []
-    for i in ids:
-        imgs.append(IMAGETILES.get(i))
 
 
 def get_data_for_all_cities_in_list(cities_list):
@@ -110,33 +132,17 @@ def get_data_for_all_cities_in_list(cities_list):
     return city_errors
 
 
-# @app.route('/entrypoint/<city>')
-# def entrypoint(city):
-#     # Make destination call with the city
-#     response = get_destination(city)
-#     # pull list of hotels
-#     hotel_list = get_hotel_list(response)
-#     if hotel_list is None:
-#         raise()
-#     # Make merchandising call for family and couple
-#     family, couple = get_full_merchandising(hotel_list)
-#     return family.text + "\n\n" + couple.text
-#     # Pull concepts from that city
-#     # Return images that match the distinct set of concepts
-
-
-def get_full_merchandising(hotels):
-    family = get_merchandising(2, 2, hotels)
-    couple = get_merchandising(2, 0, hotels)
-
-    # TODO: combine data into distinct set
-
-    return family, couple
-
-
 def get_hotel_list(response):
     resp = response.json()
     return resp.get("hotels", None)
+
+
+# TODO: this
+def return_error_page(message):
+    # load error page html
+    # add message
+    # return
+    pass
 
 
 if __name__ == "__main__":
