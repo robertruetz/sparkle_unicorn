@@ -54,7 +54,7 @@ def get_destination(destination):
     return response
 
 
-def get_merchandising(adults, children, hotels, get_pricing=False, concepts=[]):
+def get_merchandising(adults, children, hotels, get_pricing=False, concepts=None):
     url = BASE_URL + "hotels"
     data = {"adults": adults,
             "children": children,
@@ -62,7 +62,7 @@ def get_merchandising(adults, children, hotels, get_pricing=False, concepts=[]):
             "startDate": utils.get_date_today_string(),
             "endDate": utils.get_date_today_string(1),
             "hotelProvider": "hotelscombined",
-            "concepts": concepts,
+            "concepts": concepts if concepts is not None else [],
             "getPricing": get_pricing,
             "page": 1,
             "hotelIds": hotels}
