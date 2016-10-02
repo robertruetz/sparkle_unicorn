@@ -11,11 +11,11 @@ BASE_URL = "https://api.wayblazer.com/v1/"
 APIKEY = "PEZlargze3A0nyPTBfkP1kQcUw2227Ix"
 HEADERBASE = {"content-type": "application/json", "x-api-key": APIKEY}
 
-YAMLPATH = r".\files\images_cities.yml"
+YAMLPATH = r"./files/images_cities.yml"
 IMAGETILES = utils.load_imgTiles_from_yaml(YAMLPATH)
 DISTINCTCITIES = utils.get_distinct_cities(IMAGETILES)
 
-DATAFILEPATH = r".\files\data_file.yml"
+DATAFILEPATH = r"./files/data_file.yml"
 
 
 def main():
