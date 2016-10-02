@@ -16,14 +16,21 @@ IMAGETILES = utils.load_imgTiles_from_yaml(YAMLPATH)
 DISTINCTCITIES = utils.get_distinct_cities(IMAGETILES)
 
 DATAFILEPATH = r"./files/data_file.yml"
+CITYDATACACHE = utils.load_cached_city_data(DATAFILEPATH)
 
 
 def main():
-    error_list = None
-    if not os.path.exists(DATAFILEPATH):
-        error_list = get_data_for_all_cities_in_list(DISTINCTCITIES)
-    if error_list is not None:
-        print("Could not load data for {0}".format(error_list))
+
+    # Code below is only necessary for backloading data
+    # error_list = []
+    # if not os.path.exists(DATAFILEPATH):
+    #     error_list = get_data_for_all_cities_in_list(DISTINCTCITIES)
+    # else:
+    #     CITYDATACACHE = utils.load_cached_city_data(DATAFILEPATH)
+    # if len(error_list) > 0:
+    #     print("Could not load data for {0}".format(error_list))
+    # ---------
+
     app.run()
     print("NOTHING")
     # app = Flask(__name__)
@@ -92,13 +99,15 @@ def filter():
 
 def get_data_for_all_cities_in_list(cities_list):
     city_errors = []
+    city_dict = {}
     for city in cities_list:
         response = get_destination(city)
         if response.status_code != 200:
             city_errors.append(city)
         else:
-            with open(os.path.abspath(DATAFILEPATH), 'a') as f:
-                f.write("{0}: ".format(city) + response.text + "\n")
+            city_dict[city] = response.json()
+    with open(os.path.abspath(DATAFILEPATH), 'a') as f:
+        f.write(json.dumps(city_dict))
     return city_errors
 
 
