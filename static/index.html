@@ -10,9 +10,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
  
     <!-- Custom Google Web Font -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 	
     <!-- Custom CSS-->
     <link href="css/general.css" rel="stylesheet">
@@ -92,12 +91,28 @@
 	<!-- StikyMenu -->
 	<script src="js/stickUp.min.js"></script>
 	<script type="text/javascript">
+	    function insert_images(start, amount) {
+	        var fixture = [{"url": "http://images.fineartamerica.com/images-medium-large/natural-history-museum-inge-johnsson.jpg", "id": "fake"}, {"url": "http://58dd7e2bcc6365332dc4-364c24217bde5401027dea0de68de97f.r39.cf2.rackcdn.com/600x600/ocha_600x600_spa01.jpg", "id": "2463b7f7-af34-409c-a15c-2013efaca8f8"}, {"url": "https://pbs.twimg.com/media/B5Uw3cSCAAAnLpk.jpg", "id": "1f795894-7770-451d-812e-7c8502795aec"}, {"url": "http://pbs.twimg.com/media/CnahyHMXYAALFN3.jpg", "id": "c9625c15-ad7b-4b3b-a183-27abae96734d"}, {"url": "http://a1.ec-images.myspacecdn.com/images02/143/59bc8399c75c49539d9ce946157713bd/l.jpg", "id": "e36a44a8-d366-45d9-a932-be1e818c8143"}, {"url": "https://pbs.twimg.com/media/CV4Ua70UEAEvk4O.jpg", "id": "8f81e76f-6c86-4cd0-a7e0-3d4fe855efb0"}, {"url": "http://www.mundukos.com/wp-content/uploads/2016/02/disney-world-magic-kingdom.jpg", "id": "a5d9c904-308b-4476-9e0b-ee8cf91a44e1"}, {"url": "http://www.e-architect.co.uk/images/jpgs/london/one_new_change_r190511_pr2.jpg", "id": "fake"}, {"url": "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/womens-hiking-gear-main_ph.jpg", "id": "e01329a6-05dc-4b0e-91f8-fe685ff95f6b"}, {"url": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/d9cf9115361860.5603859be8c7c.jpg", "id": "fake"},{"url": "http://www.hawleymountain.com/images/djmediatools/3-fly-fishing/fishing1.jpg", "id": "e07576d7-3ea5-4e17-b926-0210a6e2d865"}, {"url": "http://relationships.robertkirby.com/wp-content/uploads/2016/04/couple-walking-holding-hands-small.jpg", "id": "3efc6f94-655f-469a-bc50-154042b31f68"}, {"url": "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/affordable-skiing_ph.jpg", "id": "70e4e627-f6d5-4aa4-b804-0f36eb50f839"}, {"url": "http://www.damasco.com/wp-content/uploads/2016/02/Golden-Gate-Bridge.png", "id": "ceb3d3c9-376a-4807-bf7d-2819ebc0b53c"}, {"url": "http://www.kronplatz.com/website/var/tmp/image-thumbnails/30000/34424/thumb__media-block-600_auto_47069efe16f8b65e9fe68e8b0afadf15/reiten-ahrntal-ferienregion-kronplatz.jpeg", "id": "0bbd7dbf-3bd3-4379-8e00-6d209702c3ba"},  {"url": "http://awesomeberlin.net/wp-content/uploads/2015/03/natural.jpg", "id": "b340192c-ff76-4181-bef7-f3c49725f84d"}, {"url": "http://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/teaserphotos/review/irelandcountyantrimtourruinsofdunlucecastle.jpg", "id": "4c07133e-de94-40c9-9a7b-634aefc1510c"}];
+            for (i = start; i<(start+amount); i++) {
+                if (i > fixture.length-1){
+                   x = i % (fixture.length - 1)
+                }
+                else{
+                   x = i
+                }
+                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="" style="padding: 6px;" src=' + fixture[x]["url"] + ' width=362;></div>'
+                $('#column-view').append(insert);
+            }
+        }
+
+        insert_images(0, 16);
+        image_index = 20
 
       $(window).scroll(function() {
            if($(window).scrollTop() + $(window).height() == $(document).height()) {
                $('#infiniteLoader').show();
-	            $('#infiniteLoader').delay(300).fadeOut('slow');
-               console.log("hello");
+	           $('#infiniteLoader').delay(300).fadeOut('slow');
+	           setTimeout(function(){insert_images(image_index, 20)}, 1000);
            }
        });
 
@@ -107,14 +122,6 @@
 		  
 		});
 	  });
-
-	  var fixture = [{"url": "http://58dd7e2bcc6365332dc4-364c24217bde5401027dea0de68de97f.r39.cf2.rackcdn.com/600x600/ocha_600x600_spa01.jpg", "id": "2463b7f7-af34-409c-a15c-2013efaca8f8"}, {"url": "https://pbs.twimg.com/media/B5Uw3cSCAAAnLpk.jpg", "id": "1f795894-7770-451d-812e-7c8502795aec"}, {"url": "http://pbs.twimg.com/media/CnahyHMXYAALFN3.jpg", "id": "c9625c15-ad7b-4b3b-a183-27abae96734d"}, {"url": "http://a1.ec-images.myspacecdn.com/images02/143/59bc8399c75c49539d9ce946157713bd/l.jpg", "id": "e36a44a8-d366-45d9-a932-be1e818c8143"}, {"url": "https://pbs.twimg.com/media/CV4Ua70UEAEvk4O.jpg", "id": "8f81e76f-6c86-4cd0-a7e0-3d4fe855efb0"}, {"url": "http://www.mundukos.com/wp-content/uploads/2016/02/disney-world-magic-kingdom.jpg", "id": "a5d9c904-308b-4476-9e0b-ee8cf91a44e1"}, {"url": "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/womens-hiking-gear-main_ph.jpg", "id": "e01329a6-05dc-4b0e-91f8-fe685ff95f6b"}, {"url": "http://www.hawleymountain.com/images/djmediatools/3-fly-fishing/fishing1.jpg", "id": "e07576d7-3ea5-4e17-b926-0210a6e2d865"}, {"url": "http://relationships.robertkirby.com/wp-content/uploads/2016/04/couple-walking-holding-hands-small.jpg", "id": "3efc6f94-655f-469a-bc50-154042b31f68"}, {"url": "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/affordable-skiing_ph.jpg", "id": "70e4e627-f6d5-4aa4-b804-0f36eb50f839"}, {"url": "http://www.damasco.com/wp-content/uploads/2016/02/Golden-Gate-Bridge.png", "id": "ceb3d3c9-376a-4807-bf7d-2819ebc0b53c"}, {"url": "http://www.kronplatz.com/website/var/tmp/image-thumbnails/30000/34424/thumb__media-block-600_auto_47069efe16f8b65e9fe68e8b0afadf15/reiten-ahrntal-ferienregion-kronplatz.jpeg", "id": "0bbd7dbf-3bd3-4379-8e00-6d209702c3ba"}, {"url": "http://awesomeberlin.net/wp-content/uploads/2015/03/natural.jpg", "id": "b340192c-ff76-4181-bef7-f3c49725f84d"}, {"url": "http://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/teaserphotos/review/irelandcountyantrimtourruinsofdunlucecastle.jpg", "id": "4c07133e-de94-40c9-9a7b-634aefc1510c"}];
-
-	  for (x in fixture) {
-	    var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="" style="padding: 6px;" src=' + fixture[x]["url"] + ' width=362;></div>'
-        $('#column-view').append(insert);
-      }
-
 	
 	</script>
 

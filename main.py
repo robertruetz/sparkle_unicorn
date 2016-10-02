@@ -1,8 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 import requests
 import json
 import utils
 import os
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -38,6 +39,21 @@ def main():
 def index_page():
     return app.send_static_file('index.html')
 
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('static/js', path)
+
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory('static/css', path)
+
+@app.route('/img/<path:path>')
+def send_img(path):
+    return send_from_directory('static/img', path)
+
+@app.route('/font/<path:path>')
+def send_font(path):
+    return send_from_directory('static/font', path)
 
 @app.route('/entrypoint')
 def entrypoint():
