@@ -1,5 +1,66 @@
 
 
+.faded {
+    opacity: 0.4;
+}
+
+.opaque {
+    opacity: 1;
+}
+
+comiseo-daterangepicker-triggerbutton{
+
+}
+
+.comiseo-daterangepicker-presets, #number_of_children-button, #number_of_people-button, #drp_autogen0{
+display:none !important;
+}
+
+.navbar-header #brand, #generate{
+display: none !important;
+width: 200px;
+}
+
+.isStuck #number_of_people-button{
+position: fixed;
+top: 10px;
+border-radius: 5px;
+right: 519px !important;
+display: block !important;
+width: 200px;
+}
+
+.isStuck #number_of_children-button{
+position: fixed;
+top: 10px;
+border-radius: 5px;
+right: 727px !important;
+display: block !important;
+width: 200px;
+}
+
+.isStuck #generate{
+position: fixed;
+top: 10px;
+border-radius: 5px;
+right: 16px !important;
+display: block !important;
+width: 200px;
+}
+
+.isStuck .navbar-header #brand{
+position: fixed;
+left: 35px;
+display: block !important;
+}
+
+.isStuck #drp_autogen0{
+position: fixed;
+top: 10px;
+right: 223px !important;
+display: block !important;
+border-radius: 5px;
+}
 /* Header Navigation */
 #top-nav{
 	border-bottom: 1px solid #e1e6dd;
