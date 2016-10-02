@@ -29,3 +29,20 @@ class imageTile(object):
                 stuff[k] = v
         encoder = json.JSONEncoder()
         return encoder.encode(stuff)
+
+
+class Hotel(object):
+
+    def __init__(self, name, urls, address):
+        self.name = name
+        self.urls = urls
+        self.address = address
+
+
+class Destination(object):
+
+    def __init__(self, city, state, country, hotels):
+        self.city = city
+        self.state = state
+        self.country = country
+        self.hotels = hotels

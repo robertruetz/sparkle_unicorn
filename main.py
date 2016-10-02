@@ -2,6 +2,7 @@ from flask import Flask, request, send_from_directory
 import requests
 import json
 import utils
+import models
 import os
 
 
@@ -85,16 +86,65 @@ def filter():
     for city in cities:
         city_part = city.split(',')[0].strip().replace(' ', '_')
         c = CITYDATACACHE.get(city_part)
-        hotels.extend(c.hotels)
+        hotels.extend(c.hotels[:2])
         for con in c.concepts:
             concepts.append(con.get("name"))
     hotels = list(set(hotels[:20]))
     concepts = list(set(concepts[:20]))
     response = get_merchandising(data.get("adults"), data.get("children"), data.get("start_date"), data.get("end_date"),
                                  hotels, concepts=concepts)
-    return json.dumps(response.json())
+    resp_data = build_destinations_response(response.json())
+    return json.dumps(resp_data)
+
+
+@app.route('/details', methods=["POST"])
+def details():
+    data = request.json
+
 
 # endregion
+
+
+def build_destinations_response(data):
+    destinations = {}
+    for item in data.get("accommodations"):
+        attraction = item.get("attraction")
+        image = item.get("image")
+        urls = None
+        if image:
+            urls = image.get("urls")
+        location = attraction.get("location")
+        address = None
+        if location:
+            address = location.get("formattedAddress")
+        hotel = {"name": attraction.get("name"),
+                 "urls": urls,
+                 "address": address}
+        # hotel = models.Hotel(attraction.get("name"), urls, address)
+        city = item.get("attraction").get("location").get("city")
+        country = item.get("attraction").get("location").get("country")
+        state = item.get("attraction").get("location").get("stateProvince")
+        key = []
+        for thing in [city, state, country]:
+            if thing:
+                key.append(thing)
+        # key = "{0}, {1} {2}".format(city, state, country)
+        key = ", ".join(key)
+        if destinations.get(key) is not None:
+            destinations[key]["hotels"].append(hotel)
+            destinations[key]["city"] = city
+            destinations[key]["state"] = state
+            destinations[key]["country"] = country
+            destinations[key]["concepts"] = attraction.get("concepts")
+        else:
+            destinations[key] = {"hotels": []}
+            destinations[key]["hotels"].append(hotel)
+            destinations[key]["city"] = city
+            destinations[key]["state"] = state
+            destinations[key]["country"] = country
+            destinations[key]["concepts"] = attraction.get("concepts")
+    return destinations
+
 
 
 def get_typeahead(typeahead):
