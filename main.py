@@ -1,11 +1,10 @@
-from flask import Flask
-from flask import request
+from flask import Flask, request
 import requests
 import json
 import utils
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 BASE_URL = "https://api.wayblazer.com/v1/"
 APIKEY = "PEZlargze3A0nyPTBfkP1kQcUw2227Ix"
@@ -38,7 +37,7 @@ def main():
 
 @app.route('/')
 def index_page():
-    return "Index Page"
+    return app.send_static_file('index.html')
 
 
 def get_typeahead(typeahead):
