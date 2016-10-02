@@ -1,8 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 import requests
 import json
 import utils
 import os
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -32,6 +33,12 @@ def main():
 def index_page():
     return app.send_static_file('index.html')
 
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('js', path)
+@app.route('/css/<path:path>')
+def send_js(path):
+    return send_from_directory('css', path)
 
 def get_typeahead(typeahead):
     """
