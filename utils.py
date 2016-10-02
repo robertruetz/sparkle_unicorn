@@ -2,6 +2,8 @@ import datetime
 import yaml
 import os
 import images
+import json
+import models
 
 
 def get_date_today_string(year_offset=None):
@@ -27,8 +29,14 @@ def load_imgTiles_from_yaml(yaml_path):
 
 
 def load_cached_city_data(cache_file_path):
-    c_file = load_yaml_data(cache_file_path)
-    return c_file
+    cities_dict = {}
+    with open(os.path.abspath(cache_file_path), 'r') as f:
+        for line in f:
+            j = json.loads(line)
+            for city, data in j.items():
+                cities_dict[city] = models.CityData(city, data.get("latitude"), data.get("longitude"),
+                                                    data.get("concepts"), data.get("hotels"))
+    return cities_dict
 
 
 def load_yaml_data(yaml_path):

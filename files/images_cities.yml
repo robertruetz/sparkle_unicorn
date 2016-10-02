@@ -3,7 +3,7 @@ images:
     cities:
       - San Francisco, CA
       - New York City, NY
-      - Washington D.C.
+      - Washington DC, District of Columbia
       - San Diego, CA
       - Orlando, FL
       - Charleston, SC
@@ -19,19 +19,19 @@ images:
       - Haleiwa, HI
       - Bishop, CA
       - Chattanooga, TN
-      - Salida, CO
+      - Salida Colorado, CO
       - San Luis Obispo, CA
       - Jackson Hole, WY
       - Valdez, AK
       - Moab, UT
       - Truckee, CA
-      - Leavenworth, WA
+      - Leavenworth Washington, WA
     tags:
       - outdoors
 
   - url: https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/affordable-skiing_ph.jpg?itok=ujY2zwJ1
     cities:
-      - New York, New York, NY
+      - New York City, NY
       - Venice, Italy
       - Berlin, Germany
       - Madrid, Spain
@@ -53,7 +53,7 @@ images:
       - Monte Carlo, Monaco
       - Siena, Italy
       - Barcelona, Spain
-      - Victoria, British Columbia
+      - Victoria British Columbia, British Columbia
       - Santa Barbara, CA
       - San Francisco, CA
     tags:
@@ -64,7 +64,7 @@ images:
       - Overland Park, KS
       - Madison, Wi
       - Plano, TX
-      - Sioux Fall, SD
+      - Sioux Falls, SD
       - Virginia Beach, VA
       - Lincoln, NE
       - Aurora, IL
@@ -91,14 +91,14 @@ images:
 
   - url: www.museum_image.com
     cities:
-      - Washington D.C
+      - Washington DC, DC
       - Paris, France
       - Athens, Greece
       - St Petersburg, Russia
       - London, England
       - Madrid, Spain
       - New York City, New York
-      - Vatican City, Italy
+      - Rome, Italy
       - Florence, Italy
       - Boston, MA
     tags:
@@ -125,8 +125,8 @@ images:
       - San Francisco, CA
       - Los Angeles, CA
       - Dallas, TX
-      - Washington D.C
-      - New York, New York
+      - Washington DC, DC
+      - New York City, New York
       - Boston, MA
       - Chicago, IL
       - Baltimore, MD
@@ -137,14 +137,14 @@ images:
   - url: https://pbs.twimg.com/media/B5Uw3cSCAAAnLpk.jpg
     cities:
       - Seattle, Washington
-      - Benton Country, Arkansas
-      - Tampa Bay, Florida
+      - Benton Arkansas, Arkansas
+      - Tampa, Florida
       - Knoxville, Tennessee
       - Fort Lauderdale, Florida
-      - Otter Tail Country, Minnesota
+      - Fergus Falls, Minnesota
       - Finger Lakes, New York
       - Austin, TX
-      - Oconee Country, South Carolina
+      - Oconee State Park, South Carolina
       - San Diego, California
     tags:
       - Lakes
@@ -168,14 +168,14 @@ images:
     cities:
       - Waitsfield, VT
       - Huma, VA
-      - Canyon de Chelly, Ariz
+      - Bighorn Lake, Wyoming
       - Seward, Alaska
       - Asheville, NC
       - Durango, Colo
       - Big Island, Hawaii
       - Napa Valley, California
       - Harrodsburg, Ky
-      - Bryce Canyon Nation Park, Utah
+      - Bryce Canyon City, Utah
     tags:
       - Horseback Riding
     
@@ -183,8 +183,8 @@ images:
     cities:
       - Beverly Hills, California
       - Park City, Utah
-      - New York, New York
-      - Kapalua Bay, Maui
+      - New York City, New York
+      - Kapalua, Maui
       - Highlands, North Carolina
       - Riviera Beach, Florida
       - Westlake Village, California
@@ -197,25 +197,25 @@ images:
   - url: http://www.hawleymountain.com/images/djmediatools/3-fly-fishing/fishing1.jpg
     cities:
       - Lizard Island, Australia
-      - Lake Alan Henry, Texas
-      - Umba River, Russia
-      - Fontenelle Creek, Wyoming
+      - Branson, Missouri
+      - Chesapeake, Virginia
+      - Kenai, Alaska
       - Boulder Creek, Colorado
       - Alphonse Island, Seychelles
-      - Worden's Pond, Rhode Island
-      - Lough Currane, Ireland
-      - Halls Creek Wisconsin
-      - Bald Eagle Lake, Minnesota
+      - Yellowstone National Park, Wyoming
+      - Lakes of Killarney, Ireland
+      - Islamorada, Florida
+      - Galveston, Texas
     tags:
       - Fishing
     
   - url: http://pbs.twimg.com/media/CnahyHMXYAALFN3.jpg:medium
     cities:
       - Palawan, Phillipines
-      - Maldives Island
+      - Maldives, Maldives
       - San Blas, Panama
       - Cayo Coco, Cuba
-      - Phi Phi island, Thailand
+      - Phi Phi Islands, Thailand
       - Alberta, Canda
       - Sabah, Malaysia
       - Menorca, Spain
