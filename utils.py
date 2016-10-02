@@ -1,7 +1,6 @@
 import datetime
 import yaml
 import os
-import images
 import json
 import models
 
@@ -23,7 +22,7 @@ def load_imgTiles_from_yaml(yaml_path):
     if imgs is None:
         raise Exception
     for img in imgs:
-        n_image = images.imageTile(img["url"], img["cities"], img["tags"])
+        n_image = models.imageTile(img["url"], img["cities"], img["tags"])
         image_list[n_image.id] = n_image
     return image_list
 
