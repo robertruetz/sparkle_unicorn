@@ -1,0 +1,19 @@
+images:
+  - url: www.myimage.com
+    cities:
+      - Miami, FL
+      - Cincinnati, OH
+    tags:
+      - beach
+      - pool
+      - chupacabra
+
+  - url: www.otherimage.com
+    cities:
+      - Houston, TX
+      - Austin, TX
+      - Miami, FL
+    tags:
+      - sharks
+      - lasers
+      - unicorns

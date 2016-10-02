@@ -1,0 +1,240 @@
+images:
+  - url: http://www.damasco.com/wp-content/uploads/2016/02/Golden-Gate-Bridge.png
+    cities:
+      - San Francisco, CA
+      - New York City, NY
+      - Washington D.C.
+      - San Diego, CA
+      - Orlando, FL
+      - Charleston, SC
+      - New Orleans, LO
+      - Las Vegas, NV
+      - Chicago, IL
+      - Anchorage, AK
+    tags:
+      - Attraction
+
+  - url: https://pbs.twimg.com/media/CV4Ua70UEAEvk4O.jpg
+    cities:
+      - Haleiwa, HI
+      - Bishop, CA
+      - Chattanooga, TN
+      - Salida, CO
+      - San Luis Obispo, CA
+      - Jackson Hole, WY
+      - Valdez, AK
+      - Moab, UT
+      - Truckee, CA
+      - Leavenworth, WA
+    tags:
+      - outdoors
+
+  - url: https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/affordable-skiing_ph.jpg?itok=ujY2zwJ1
+    cities:
+      - New York, New York, NY
+      - Venice, Italy
+      - Berlin, Germany
+      - Madrid, Spain
+      - Rome, Italy
+      - Barcelona, Spain
+      - Vienna, Austria
+      - Amsterdam, Netherlands
+      - Paris, France
+      - London, England
+    tags:
+      - winter
+    
+  - url: http://relationships.robertkirby.com/wp-content/uploads/2016/04/couple-walking-holding-hands-small.jpg
+    cities:
+      - Lucerne, Switzerland
+      - Salzburg, Austria
+      - Savannah, Georgia
+      - Seville, Spain
+      - Monte Carlo, Monaco
+      - Siena, Italy
+      - Barcelona, Spain
+      - Victoria, British Columbia
+      - Santa Barbara, CA
+      - San Francisco, CA
+    tags:
+      - Romantic  
+
+  - url: http://www.mundukos.com/wp-content/uploads/2016/02/disney-world-magic-kingdom.jpg
+    cities:
+      - Overland Park, KS
+      - Madison, Wi
+      - Plano, TX
+      - Sioux Fall, SD
+      - Virginia Beach, VA
+      - Lincoln, NE
+      - Aurora, IL
+      - Omaha, Ne
+      - Colorado Springs, CO
+      - Fremont, CA
+    tags:
+      - Family   
+
+  - url: http://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/teaserphotos/review/irelandcountyantrimtourruinsofdunlucecastle.jpg
+    cities:
+      - Cusco, Peru
+      - Alexandra, Egypt
+      - Athens, Greece
+      - Varanasi, India
+      - Prague, Czech Republic
+      - Beijing, China
+      - Berlin, Germany
+      - Istanbul, Turkey
+      - Carthage, Tunisia
+      - Boston, MA
+    tags:
+      - historial 
+
+  - url: www.museum_image.com
+    cities:
+      - Washington D.C
+      - Paris, France
+      - Athens, Greece
+      - St Petersburg, Russia
+      - London, England
+      - Madrid, Spain
+      - New York City, New York
+      - Vatican City, Italy
+      - Florence, Italy
+      - Boston, MA
+    tags:
+      - Museum    
+    
+  - url: http://awesomeberlin.net/wp-content/uploads/2015/03/natural.jpg
+    cities:
+      - New York City, New York
+      - Milan, Italy
+      - Dubai, United Arab Emirates
+      - Madrid, Spain
+      - Vienna, Austria
+      - Buenos aires, Argentina
+      - Hong Kong, Hong Kong
+      - Paris, France
+      - Tokyo, Japan
+      - London, England
+    tags:
+      - Shopping
+    
+  - url: www.sport_image.com
+    cities:
+      - Seattle, WA
+      - San Francisco, CA
+      - Los Angeles, CA
+      - Dallas, TX
+      - Washington D.C
+      - New York, New York
+      - Boston, MA
+      - Chicago, IL
+      - Baltimore, MD
+      - Philadelphia, PA
+    tags:
+      - Sport
+    
+  - url: https://pbs.twimg.com/media/B5Uw3cSCAAAnLpk.jpg
+    cities:
+      - Seattle, Washington
+      - Benton Country, Arkansas
+      - Tampa Bay, Florida
+      - Knoxville, Tennessee
+      - Fort Lauderdale, Florida
+      - Otter Tail Country, Minnesota
+      - Finger Lakes, New York
+      - Austin, TX
+      - Oconee Country, South Carolina
+      - San Diego, California
+    tags:
+      - Lakes
+    
+  - url: http://a1.ec-images.myspacecdn.com/images02/143/59bc8399c75c49539d9ce946157713bd/l.jpg
+    cities:
+      - Sandusky, OH
+      - Elysburg, PA
+      - Lake Buena Vista, FL
+      - New Braunfels, TX
+      - Orlando, FL
+      - Valencia, CA
+      - Mason, OH
+      - Wisconsin Dells, WI
+      - Hershey, PA
+      - Buena Park, CA
+    tags:
+      - Theme Park
+    
+  - url: http://www.kronplatz.com/website/var/tmp/image-thumbnails/30000/34424/thumb__media-block-600_auto_47069efe16f8b65e9fe68e8b0afadf15/reiten-ahrntal-ferienregion-kronplatz.jpeg
+    cities:
+      - Waitsfield, VT
+      - Huma, VA
+      - Canyon de Chelly, Ariz
+      - Seward, Alaska
+      - Asheville, NC
+      - Durango, Colo
+      - Big Island, Hawaii
+      - Napa Valley, California
+      - Harrodsburg, Ky
+      - Bryce Canyon Nation Park, Utah
+    tags:
+      - Horseback Riding
+    
+  - url: http://58dd7e2bcc6365332dc4-364c24217bde5401027dea0de68de97f.r39.cf2.rackcdn.com/600x600/ocha_600x600_spa01.jpg
+    cities:
+      - Beverly Hills, California
+      - Park City, Utah
+      - New York, New York
+      - Kapalua Bay, Maui
+      - Highlands, North Carolina
+      - Riviera Beach, Florida
+      - Westlake Village, California
+      - Orlando, Florida
+      - Park City, Utah
+      - Boothbay Harbor, Maine
+    tags:
+      - Spa
+    
+  - url: http://www.hawleymountain.com/images/djmediatools/3-fly-fishing/fishing1.jpg
+    cities:
+      - Lizard Island, Australia
+      - Lake Alan Henry, Texas
+      - Umba River, Russia
+      - Fontenelle Creek, Wyoming
+      - Boulder Creek, Colorado
+      - Alphonse Island, Seychelles
+      - Worden's Pond, Rhode Island
+      - Lough Currane, Ireland
+      - Halls Creek Wisconsin
+      - Bald Eagle Lake, Minnesota
+    tags:
+      - Fishing
+    
+  - url: http://pbs.twimg.com/media/CnahyHMXYAALFN3.jpg:medium
+    cities:
+      - Palawan, Phillipines
+      - Maldives Island
+      - San Blas, Panama
+      - Cayo Coco, Cuba
+      - Phi Phi island, Thailand
+      - Alberta, Canda
+      - Sabah, Malaysia
+      - Menorca, Spain
+      - Blue Lagoon, Iceland
+      - Tulum, Mexico
+    tags:
+      - Swimming
+    
+  - url: https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/womens-hiking-gear-main_ph.jpg?itok=FwIslRy_
+    cities:
+      - Portland, OR
+      - Jackson Hole, Wyo
+      - Burlington, Vt
+      - Fort Collins, Colorado
+      - Minneapolis, Minn
+      - Asheville, N.C
+      - Flagstaff, Arizona
+      - Seattle, Washington
+      - Knoxville, Tenn
+      - Juneau, Alaska
+    tags:
+      - Hiking
