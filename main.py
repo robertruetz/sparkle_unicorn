@@ -4,7 +4,7 @@ import json
 import utils
 import os
 
-app = Flask(__name__, static_url_path='static')
+app = Flask(__name__, static_url_path='/static')
 
 BASE_URL = "https://api.wayblazer.com/v1/"
 APIKEY = "PEZlargze3A0nyPTBfkP1kQcUw2227Ix"
