@@ -2,3 +2,5 @@
 scratch 
 __pycache__/ 
 
+files/top_cities_us.txt 
+files/worldcitiespop.txt 

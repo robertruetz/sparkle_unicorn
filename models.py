@@ -14,6 +14,33 @@ class CityData(object):
         self.hotels = hotels
 
 
+class Article(object):
+
+    def __init__(self, linkOut, image, destination, displayName, concepts, text, id=None):
+        self.id = id if id is not None else uuid.uuid4()
+        self.linkOut = linkOut
+        self.image = image
+        self.destination = destination
+        self.displayName = displayName
+        self.concepts = concepts
+        self.text = text
+
+    def to_entrypoint_response(self):
+        stuff = {}
+        for k, v in self.__dict__.items():
+            if not k.startswith("__") and "concepts" not in k:
+                stuff[k] = str(v)
+        return stuff
+
+    def __str__(self):
+        stuff = {}
+        for k, v in self.__dict__.items():
+            if not k.startswith("__"):
+                stuff[k] = str(v)
+        encoder = json.JSONEncoder()
+        return encoder.encode(stuff)
+
+
 class imageTile(object):
 
     def __init__(self, url, cities, tags):
