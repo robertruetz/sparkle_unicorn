@@ -200,7 +200,7 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-border{border:1px solid #ccc!important}
 .w3-border-top{border-top:1px solid #ccc!important}.w3-border-bottom{border-bottom:1px solid #ccc!important}
 .w3-border-left{border-left:1px solid #ccc!important}.w3-border-right{border-right:1px solid #ccc!important}
-.w3-margin{margin:16px!important}.w3-margin-0{margin:0!important}
+.w3-margin{margin-top:16px!important}.w3-margin-0{margin:0!important}
 .w3-margin-top{margin-top:16px!important}.w3-margin-bottom{margin-bottom:16px!important}
 .w3-margin-left{margin-left:16px!important}.w3-margin-right{margin-right:16px!important}
 .w3-section{margin-top:16px!important;margin-bottom:16px!important}
