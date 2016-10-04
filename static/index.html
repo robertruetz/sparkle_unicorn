@@ -246,7 +246,7 @@
                 else{
                    x = i
                 }
-                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;><div class="over-panel" style="display:none; position: absolute; bottom: 0;right: 0;left: 0; top: 0;background-color: black; opacity: 0.5;"> </div><p class="over-text" style="position: absolute; left: 0; top: 0;color: white; padding:10px; opacity: .8;  " >'+ fixture[x]["text"] + '</p></div>'
+                var insert = '<div class="card" style="border-width: 2px;" position: static;"><a target="_blank" href="'+fixture[x]["linkOut"]+'"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;><div class="over-panel" style="display:none; position: absolute; bottom: 0;right: 0;left: 0; top: 0;background-color: black; opacity: 0.5;"> </div><p class="over-text" style="position: absolute; left: 0; top: 0;color: white; padding:10px; opacity: .8;  " >'+ fixture[x]["text"] + '</p></a></div>'
                 $('#column-view').append(insert);
             }
         }
@@ -296,10 +296,6 @@
 
        });
 
-      $('.card').click(function(){
-            alert("this always works");
-
-       });
 	
 	</script>
 
