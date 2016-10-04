@@ -4,6 +4,7 @@ import json
 import utils
 import models
 import os
+from jinja2 import Template, Environment, PackageLoader
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -21,6 +22,8 @@ DISTINCTCITIES = utils.get_distinct_cities(IMAGETILES)
 
 DATAFILEPATH = r"./files/data_file.yml"
 CITYDATACACHE = utils.load_cached_city_data(DATAFILEPATH)
+
+template_env = Environment(loader=PackageLoader('sparkle_unicorn', 'static'))
 
 
 def main():
@@ -41,7 +44,12 @@ def main():
 
 @app.route('/')
 def index_page():
-    return app.send_static_file('index.html')
+    article_list = []
+    for id, article in ARTICLES.items():
+        article_list.append(article.to_entrypoint_response())
+
+    template = template_env.get_template('index.html', article_list=json.dumps(article_list))
+    return template.render(template)
 
 @app.route('/js/<path:path>')
 def send_js(path):
@@ -58,13 +66,6 @@ def send_img(path):
 @app.route('/fonts/<path:path>')
 def send_font(path):
     return send_from_directory('static/font', path)
-
-@app.route('/entrypoint')
-def entrypoint():
-    article_list = []
-    for id, article in ARTICLES.items():
-        article_list.append(article.to_entrypoint_response())
-    return json.dumps(article_list)
 
 
 @app.route('/reload/<thing>')
