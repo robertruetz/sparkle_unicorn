@@ -6,6 +6,11 @@
     display: none;
 }
 
+.over-shade{
+    display: none;
+}
+
+
 
 .card:hover{
     -webkit-filter: grayscale; /*sepia, hue-rotate, invert....*/
