@@ -273,6 +273,14 @@
 	  $( "#number_of_people, #number_of_children" ).selectmenu();
 	  $('#generate').click(function(){
 
+            $.ajax({
+                url: "http://sparkleunicorn.herokuapp.com/filter"
+                }).done(function(data){
+                console.log(data);
+                });
+
+
+
             $('#third_page').show();
             $('.first_and_second_page').hide();
             $('body').css('background-color', '#F5F3EE');
