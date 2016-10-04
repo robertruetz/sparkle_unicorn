@@ -274,7 +274,9 @@
 	  $('#generate').click(function(){
 
             $.ajax({
-                url: "http://sparkleunicorn.herokuapp.com/filter"
+                type: "POST",
+                url: "http://sparkleunicorn.herokuapp.com/filter",
+                data: "[1,2,3]",
                 }).done(function(data){
                 console.log(data);
                 });
