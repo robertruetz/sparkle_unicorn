@@ -15,7 +15,7 @@ def get_date_today_string(year_offset=None):
     return now.strftime("%Y-%m-%d")
 
 
-def load_article_data_from_yaml(yaml_path):
+def load_article_data_from_yaml(yaml_path, get_city_data=False):
     y_file = load_yaml_data(yaml_path)
     article_dict = {}
     count = 0
@@ -24,6 +24,9 @@ def load_article_data_from_yaml(yaml_path):
                                            article.get("displayName"), article.get("concepts"), article.get("text"), count)
         article_dict[n_article.id] = n_article
         count += 1
+
+    if get_city_data:
+        pass
     return article_dict
 
 
@@ -41,6 +44,8 @@ def load_imgTiles_from_yaml(yaml_path):
 
 def load_cached_city_data(cache_file_path):
     cities_dict = {}
+    if not os.path.exists(cache_file_path):
+        return cities_dict
     with open(os.path.abspath(cache_file_path), 'r') as f:
         for line in f:
             j = json.loads(line)
@@ -62,12 +67,10 @@ def load_yaml_data(yaml_path):
     return y_file
 
 
-def get_distinct_cities(img_tiles_dict):
+def get_distinct_cities(articles_dict):
     cities = []
-    for k, v in img_tiles_dict.items():
-        for c in v.cities:
-            city = c.split(',')[0].replace(' ', '_').strip()
-            cities.append(city)
+    for article in articles_dict.values():
+        cities.append(article.destination)
     return set(cities)
 
 
