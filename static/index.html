@@ -282,7 +282,7 @@
             $.ajax({
                 type: "POST",
                 url: "http://sparkleunicorn.herokuapp.com/filter",
-                data: "[1,2,3]",
+                data: {"ids":[1,2,3], "adults": 2, "children": 2, "startDate": "12/12/2013", "endDate": "12/13/2013"},
                 }).done(function(data){
                 console.log(data);
                 });
