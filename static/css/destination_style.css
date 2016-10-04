@@ -1,0 +1,31 @@
+.row{
+margin-bottom: 12px !important;
+}
+
+.button_see_hotels {
+	/*float: right; */
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 10px;
+}
+
+#entry_container {
+	position: relative;
+}
+#activity_description>p {
+	display: inline;
+}
+
+ul {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+li {
+	list-style-type: none;
+	vertical-align: middle;
+}
+h6 {
+	font-size: 14px
+}

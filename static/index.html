@@ -2,9 +2,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="author" content="">
+    <meta name="author" content="Rob Carrington">
 
-    <title>Sparkle Unicorn</title>
+    <title>Wanderlust</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -15,27 +15,33 @@
 	
     <!-- Custom CSS-->
     <link href="css/general.css" rel="stylesheet">
-	
+
 	 <!-- Owl-Carousel -->
     <link href="css/custom.css" rel="stylesheet">
 	<link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.theme.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-	
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/jquery.comiseo.daterangepicker.css" rel="stylesheet">
+
+
 	<!-- Magnific Popup core CSS file -->
 	<link rel="stylesheet" href="css/magnific-popup.css">
     <script type="text/javascript" src="js/jquery-1.10.2.js" ></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+
 
 </head>
 
 <body id="home">
 
 	<!-- FullScreen -->
+    <div class="first_and_second_page">
     <div class="intro-header">
 		<div class="col-xs-12 text-center abcen1">
-			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Sparkle Unicorn</h1>
+			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Wanderlust</h1>
 			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Find Your Dream Destination</h3>
-		</div>    
+		</div>
         <!-- /.container -->
 		<div class="col-xs-12 text-center abcen wow fadeIn">
 			<div class="button_down">
@@ -53,14 +59,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#home">Sparkle Unicorn</a>
-                    </div>
-                    <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                    <li class="menuItem"><a href="#credits">Done Collecting</a></li>
-                </ul>
+                    <a id="brand" class="navbar-brand" href="#home" style="">Wanderlust</a>
+
+                    <select name="number_of_people" id="number_of_people">
+                      <option disabled selected># of Adults</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+
+                    <select name="number_of_children" id="number_of_children">
+                      <option disabled selected># of Children</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+
+                    <input id="calendar" name="calendar"/>
+                    <button type="button" class="ui-button" id="generate">Generate!</button>
             </div>
-        </div>
+
+            </div>
     </nav>
 	
 	<!-- What is -->
@@ -82,15 +105,139 @@
 
     </div><!-- end of wrapper-->
 
+</div>
+    <div id='third_page' class="w3-content" style="display: none;max-width:1400px">
+
+    <!-- Header -->
+    <div class="w3-container w3-center w3-padding-32 intro-header2">
+      <div class="col-xs-12 text-center abcen1">
+
+            </div>
+      <!--<p>Like, a lot</p>-->
+    </div>
+
+<!-- Location entries -->
+<div id="content" style="">
+  <!-- location entry -->
+  <div class="w3-card-4 w3-margin w3-white" id="entry_container">
+    <div class="row">
+      <div class="col-sm-4">
+        <img style="margin-bottom: 0px;" src="http://www.astonhotels.com/assets/slides/690x380-Hawaii-Sunset.jpg" width="340" height="150"/>
+      </div>
+
+      <div class="col-sm-8">
+        <div class="w3-container w3-padding-8">
+          <h3><b>Honolulu, HI</b></h3>
+        </div>
+
+        <div class="w3-container" id="activity_description">
+          <p>Swimming</p>
+          <p>Hiking</p>
+          <p>Honeymoon</p>
+        </div>
+      </div>
+        <div class="w3-row button_see_hotels">
+          <div class="w3-col m8 s12">
+            <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>See Hotels</b></button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <ul class="w3-card-4 w3-margin w3-white hotel-list">
+    <li>
+      <h6>Four Seasons Resort</h6>
+    </li>
+    <hr>
+    <li><h6>Marriot Hotel</h6></li>
+    <hr>
+    <li><h6>Radisson Hotel & Suites</h6></li>
+    <hr>
+    <li><h6>Ritz Carleton Hotel</h6></li>
+  </ul>
+
+     <!-- location entry -->
+  <div class="w3-card-4 w3-margin w3-white" id="entry_container">
+    <div class="row">
+      <div class="col-sm-4">
+        <img style="margin-bottom: 0px;" src="http://assets.bwbx.io/images/users/iqjWHBFdfxIU/iYZhYH2KnpA8/v1/-1x-1.jpg" width="340" height="150"/>
+      </div>
+
+      <div class="col-sm-8">
+        <div class="w3-container w3-padding-8">
+          <h3><b>Miami, FL</b></h3>
+        </div>
+
+        <div class="w3-container" id="activity_description">
+          <p>Horseback riding</p>
+          <p>Hiking</p>
+          <p>Swimming</p>
+        </div>
+      </div>
+        <div class="w3-row button_see_hotels">
+          <div class="w3-col m8 s12">
+            <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>See Hotels</b></button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+     <!-- location entry -->
+  <div class="w3-card-4 w3-margin w3-white" id="entry_container">
+    <div class="row">
+      <div class="col-sm-4">
+        <img style="margin-bottom: 0px;" src="http://www.livability.com/sites/default/files/styles/898x505/public/grand_tetons.jpg?itok=szhFsRUY" width="340" height="150"/>
+      </div>
+
+      <div class="col-sm-8">
+        <div class="w3-container w3-padding-8">
+          <h3><b>Boulder, CO</b></h3>
+        </div>
+
+        <div class="w3-container" id="activity_description">
+          <p>Hiking</p>
+          <p>Sport</p>
+          <p>Swimming</p>
+        </div>
+      </div>
+        <div class="w3-row button_see_hotels">
+          <div class="w3-col m8 s12">
+            <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>See Hotels</b></button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+<!-- END Introduction Menu -->
+</div>
+
+<!-- END w3-content -->
+</div>
+
 
     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <script src="js/bootstrap.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/script.js"></script>
+    <script src="js/jquery.comiseo.daterangepicker.js"></script>
 	<!-- StikyMenu -->
 	<script src="js/stickUp.min.js"></script>
 	<script type="text/javascript">
+        $( document ).ready(function() {
+            $( function() {
+                    $( "#calendar" ).daterangepicker({initialText : 'Date Range'});
+
+                } );
+                setTimeout(function(){$("#drp_autogen0").text('Date Range').addClass('ui-button');}, 500)
+        });
+
+
 	    function insert_images(start, amount) {
 	        var fixture = [{"url": "http://images.fineartamerica.com/images-medium-large/natural-history-museum-inge-johnsson.jpg", "id": "fake"}, {"url": "http://58dd7e2bcc6365332dc4-364c24217bde5401027dea0de68de97f.r39.cf2.rackcdn.com/600x600/ocha_600x600_spa01.jpg", "id": "2463b7f7-af34-409c-a15c-2013efaca8f8"}, {"url": "https://pbs.twimg.com/media/B5Uw3cSCAAAnLpk.jpg", "id": "1f795894-7770-451d-812e-7c8502795aec"}, {"url": "http://pbs.twimg.com/media/CnahyHMXYAALFN3.jpg", "id": "c9625c15-ad7b-4b3b-a183-27abae96734d"}, {"url": "http://a1.ec-images.myspacecdn.com/images02/143/59bc8399c75c49539d9ce946157713bd/l.jpg", "id": "e36a44a8-d366-45d9-a932-be1e818c8143"}, {"url": "https://pbs.twimg.com/media/CV4Ua70UEAEvk4O.jpg", "id": "8f81e76f-6c86-4cd0-a7e0-3d4fe855efb0"}, {"url": "http://www.mundukos.com/wp-content/uploads/2016/02/disney-world-magic-kingdom.jpg", "id": "a5d9c904-308b-4476-9e0b-ee8cf91a44e1"}, {"url": "http://www.e-architect.co.uk/images/jpgs/london/one_new_change_r190511_pr2.jpg", "id": "fake"}, {"url": "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/womens-hiking-gear-main_ph.jpg", "id": "e01329a6-05dc-4b0e-91f8-fe685ff95f6b"}, {"url": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/d9cf9115361860.5603859be8c7c.jpg", "id": "fake"},{"url": "http://www.hawleymountain.com/images/djmediatools/3-fly-fishing/fishing1.jpg", "id": "e07576d7-3ea5-4e17-b926-0210a6e2d865"}, {"url": "http://relationships.robertkirby.com/wp-content/uploads/2016/04/couple-walking-holding-hands-small.jpg", "id": "3efc6f94-655f-469a-bc50-154042b31f68"}, {"url": "https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/migrated-images/affordable-skiing_ph.jpg", "id": "70e4e627-f6d5-4aa4-b804-0f36eb50f839"}, {"url": "http://www.damasco.com/wp-content/uploads/2016/02/Golden-Gate-Bridge.png", "id": "ceb3d3c9-376a-4807-bf7d-2819ebc0b53c"}, {"url": "http://www.kronplatz.com/website/var/tmp/image-thumbnails/30000/34424/thumb__media-block-600_auto_47069efe16f8b65e9fe68e8b0afadf15/reiten-ahrntal-ferienregion-kronplatz.jpeg", "id": "0bbd7dbf-3bd3-4379-8e00-6d209702c3ba"},  {"url": "http://awesomeberlin.net/wp-content/uploads/2015/03/natural.jpg", "id": "b340192c-ff76-4181-bef7-f3c49725f84d"}, {"url": "http://www.zicasso.com/sites/default/files/styles/original_scaled_down/public/teaserphotos/review/irelandcountyantrimtourruinsofdunlucecastle.jpg", "id": "4c07133e-de94-40c9-9a7b-634aefc1510c"}];
             for (i = start; i<(start+amount); i++) {
@@ -100,7 +247,7 @@
                 else{
                    x = i
                 }
-                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="" style="padding: 6px;" src=' + fixture[x]["url"] + ' width=362;></div>'
+                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["url"] + ' width=362;></div>'
                 $('#column-view').append(insert);
             }
         }
@@ -122,6 +269,21 @@
 		  
 		});
 	  });
+
+	  $( "#number_of_people, #number_of_children" ).selectmenu();
+	  $('#generate').click(function(){
+
+            $('#third_page').show();
+            $('.first_and_second_page').hide();
+            $('body').css('background-color', '#F5F3EE');
+            $('body').css('background', 'url("img/intro/asanoha-400px.png") repeat');
+
+       });
+
+      $('.faded, .opaque').click(function(){
+            $(this).toggleClass('faded opaque');
+
+       });
 	
 	</script>
 
@@ -137,5 +299,10 @@
     <script>
 
     </script>
+
+<script type="text/javascript" src="js/generate-location.js"></script>
+<script type="text/javascript" src="js/collapsable-hotel.js"></script>
+<link rel="stylesheet" type="text/css" href="css/destination_style.css">
+<link rel="stylesheet" href="css/w3.css">
 </body>
 </html>
