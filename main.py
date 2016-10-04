@@ -4,7 +4,7 @@ import json
 import utils
 import models
 import os
-from jinja2 import Template, Environment, PackageLoader
+from jinja2 import Template, Environment, FileSystemLoader
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -23,7 +23,7 @@ DISTINCTCITIES = utils.get_distinct_cities(IMAGETILES)
 DATAFILEPATH = r"./files/data_file.yml"
 CITYDATACACHE = utils.load_cached_city_data(DATAFILEPATH)
 
-template_env = Environment(loader=PackageLoader('sparkle_unicorn', 'static'))
+template_env = Environment(loader=FileSystemLoader('./static'))
 
 
 def main():
@@ -48,8 +48,8 @@ def index_page():
     for id, article in ARTICLES.items():
         article_list.append(article.to_entrypoint_response())
 
-    template = template_env.get_template('index.html', article_list=json.dumps(article_list))
-    return template.render(template)
+    template = template_env.get_template('index.html')
+    return template.render(article_list=json.dumps(article_list))
 
 @app.route('/js/<path:path>')
 def send_js(path):
