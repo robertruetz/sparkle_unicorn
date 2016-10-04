@@ -4,8 +4,8 @@ var elBody = document.getElementById('third_page');
 function generateLocation(image, locationName, concepts) {
 	htmlBodyString = "<div class='w3-card-4 w3-margin w3-white' id='entry_container'>" +
     				"<div class='row'>" +
-      					"<div class='col-sm-4'>" +
-        					"<img src=" + image + "alt='Nature' style='width:100%'/>" +
+      					"<div class='col-sm-3'>" +
+        					"<img style='margin-bottom: 0px;' src=" + image + " alt='Nature' width='340' height='250'/>" +
       					"</div>" +
 
       					"<div class='col-sm-8'>" +
@@ -23,7 +23,8 @@ function generateLocation(image, locationName, concepts) {
         					"</div>" +
       					"</div>"
     				"</div>" +
-  				"</div>";
+  				"</div>"
+  				;
 
 //  	htmlBodyString += generateHotels();
 
@@ -52,9 +53,9 @@ function generateMultipleCities(LocationNameList) {
 
 
 function generateHotels(hotelList) {
-	var htmlHotelString = "<ul class='w3-card-4 w3-margin w3-white hotel-list'>";
+	var htmlHotelString = "<ul style='display: none;' class='w3-card-4 w3-margin w3-white hotel-list'>";
 	for(var i = 0; i <= hotelList.length-1; i++) {
-		var hotelName = //GRAB NAME
+		var hotelName = hotelList[i]["attraction"]["name"]
 		htmlHotelString += "<li>" +
       							"<h6>" + hotelName + "</h6>" +
     						"</li>" +

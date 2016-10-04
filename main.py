@@ -79,8 +79,8 @@ def reload_thing(thing):
 @app.route('/filter', methods=["POST"])
 def filter_route():
     data = request.json
-    print(data)
     ids = data.get("ids", None)
+    print(ids)
     if ids is None:
         raise Exception
     cities = []
@@ -90,6 +90,8 @@ def filter_route():
             return "ErrorPage"
         cities.append(article.destination)
     cities = set(cities)
+
+    print(cities)
 
     hotels = []
     concepts = []
@@ -103,7 +105,7 @@ def filter_route():
     concepts = list(set(concepts))
     response = get_merchandising(data.get("adults"), data.get("children"), data.get("startDate"), data.get("endDate"),
                                  hotels, concepts=concepts)
-    print(response)
+
     resp_data = build_destinations_response(response.json())
     return json.dumps(resp_data)
 
@@ -167,11 +169,25 @@ def get_merchandising(adults, children, start_date, end_date, hotels, get_pricin
             "endDate": end_date,
             "hotelProvider": "hotelscombined",
             "concepts": concepts if concepts is not None else [],
-            "getPricing": get_pricing,
+            "getPricing": True,
             "page": 1,
             "hotelIds": hotels}
+
+    data = {"adults": 2,
+            "children": 2,
+            "rooms": 1,
+            "startDate": '2016-10-15',
+            "endDate": '2016-10-25',
+            "hotelProvider": "hotelscombined",
+            "concepts": [],
+            "getPricing": False,
+            "page": 1,
+            "hotelIds": hotels}
+
+    print(data['hotelIds'])
     response = requests.post(url, data=json.dumps(data), headers=HEADERBASE)
     if response.status_code != 200:
+        response.raise_for_status()
         return "ErrorPage"
     return response
 
