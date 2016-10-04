@@ -14,10 +14,10 @@ HEADERBASE = {"content-type": "application/json", "x-api-key": APIKEY}
 YAMLPATH = r"./files/images_cities.yml"
 IMAGETILES = utils.load_imgTiles_from_yaml(YAMLPATH)
 
-ARTICLEPATH = r"./files/article_data.yml"
+ARTICLEPATH = r"./files/blogpost.yml"
 ARTICLES = utils.load_article_data_from_yaml(ARTICLEPATH)   # Dictionary of id: article obj
 
-DISTINCTCITIES = utils.get_distinct_cities(IMAGETILES)
+DISTINCTCITIES = utils.get_distinct_cities(ARTICLES)
 
 DATAFILEPATH = r"./files/data_file.yml"
 CITYDATACACHE = utils.load_cached_city_data(DATAFILEPATH)
@@ -76,33 +76,30 @@ def reload_thing(thing):
 
 
 @app.route('/filter', methods=["POST"])
-def filter():
+def filter_route():
     data = request.json
     ids = data.get("ids", None)
     if ids is None:
         raise Exception
     cities = []
     for i in ids:
-        tile = IMAGETILES.get(i)
-        if tile is None:
-            raise Exception     #TODO: Really? Exception?
-        cities.extend(tile.cities)
+        article = ARTICLES.get(i)
+        if article is None:
+            return "ErrorPage"
+        cities.append(article.destination)
     cities = set(cities)
-
-    # TODO: implement concept matching
 
     hotels = []
     concepts = []
 
     for city in cities:
-        city_part = city.split(',')[0].strip().replace(' ', '_')
-        c = CITYDATACACHE.get(city_part)
-        hotels.extend(c.hotels[:2])
+        c = CITYDATACACHE.get(city)
+        hotels.extend(c.hotels)
         for con in c.concepts:
             concepts.append(con.get("name"))
-    hotels = list(set(hotels[:20]))
-    concepts = list(set(concepts[:20]))
-    response = get_merchandising(data.get("adults"), data.get("children"), data.get("start_date"), data.get("end_date"),
+    hotels = list(set(hotels))
+    concepts = list(set(concepts))
+    response = get_merchandising(data.get("adults"), data.get("children"), data.get("startDate"), data.get("endDate"),
                                  hotels, concepts=concepts)
     resp_data = build_destinations_response(response.json())
     return json.dumps(resp_data)
@@ -119,19 +116,7 @@ def details():
 def build_destinations_response(data):
     destinations = {}
     for item in data.get("accommodations"):
-        attraction = item.get("attraction")
-        image = item.get("image")
-        urls = None
-        if image:
-            urls = image.get("urls")
-        location = attraction.get("location")
-        address = None
-        if location:
-            address = location.get("formattedAddress")
-        hotel = {"name": attraction.get("name"),
-                 "urls": urls,
-                 "address": address}
-        # hotel = models.Hotel(attraction.get("name"), urls, address)
+        # build key
         city = item.get("attraction").get("location").get("city")
         country = item.get("attraction").get("location").get("country")
         state = item.get("attraction").get("location").get("stateProvince")
@@ -139,21 +124,12 @@ def build_destinations_response(data):
         for thing in [city, state, country]:
             if thing:
                 key.append(thing)
-        # key = "{0}, {1} {2}".format(city, state, country)
         key = ", ".join(key)
-        if destinations.get(key) is not None:
-            destinations[key]["hotels"].append(hotel)
-            destinations[key]["city"] = city
-            destinations[key]["state"] = state
-            destinations[key]["country"] = country
-            destinations[key]["concepts"] = attraction.get("concepts")
-        else:
+
+        if not destinations.get(key):
             destinations[key] = {"hotels": []}
-            destinations[key]["hotels"].append(hotel)
-            destinations[key]["city"] = city
-            destinations[key]["state"] = state
-            destinations[key]["country"] = country
-            destinations[key]["concepts"] = attraction.get("concepts")
+
+        destinations[key]["hotels"].append({"attraction": item.get("attraction"), "images": item.get("image")})
     return destinations
 
 
@@ -163,7 +139,8 @@ def get_typeahead(typeahead):
     """
     url = BASE_URL + "typeahead?search={0}".format(typeahead)
     response = requests.get(url, headers=HEADERBASE)
-    #TODO: Handle response verification
+    if response.status_code != 200:
+        return "ErrorPage"
     return response
 
 
@@ -173,7 +150,8 @@ def get_destination(destination):
     """
     url = BASE_URL + "destinations/detail?destination=place:{0}".format(destination)
     response = requests.get(url, headers=HEADERBASE)
-    # TODO: Handle response verification
+    if response.status_code != 200:
+        return "ErrorPage"
     return response
 
 
@@ -190,14 +168,18 @@ def get_merchandising(adults, children, start_date, end_date, hotels, get_pricin
             "page": 1,
             "hotelIds": hotels}
     response = requests.post(url, data=json.dumps(data), headers=HEADERBASE)
-    # TODO: Handle response verification
+    if response.status_code != 200:
+        return "ErrorPage"
     return response
 
 
-def get_data_for_all_cities_in_list(cities_list):
+def get_data_for_all_cities_in_list(cities_list, update=False):
     city_errors = []
     city_dict = {}
+    city_cache = utils.load_cached_city_data(DATAFILEPATH)
     for city in cities_list:
+        if city_cache.get(city) and not update:
+            continue
         response = get_destination(city)
         if response.status_code != 200:
             city_errors.append(city)

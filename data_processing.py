@@ -4,6 +4,7 @@ import main
 import utils
 import models
 import sys
+import re
 
 
 DATAFILEPATH = r"./files/data_file_us_cities.yml"
@@ -44,10 +45,13 @@ def backload_us_city_data():
     print(get_data_for_all_cities_in_list(cities))
 
 
-def get_data_for_all_cities_in_list(cities_list):
+def get_data_for_all_cities_in_list(cities_list, update=False):
     city_errors = []
     city_dict = {}
+    city_cache = utils.load_cached_city_data(DATAFILEPATH)
     for city in cities_list:
+        if city_cache.get(city) and not update:
+            continue
         response = main.get_destination(city)
         if response.status_code != 200:
             city_errors.append(city)
@@ -58,8 +62,23 @@ def get_data_for_all_cities_in_list(cities_list):
     return city_errors
 
 
+def regex_fix():
+    with open("./files/blogpost.yml", 'r') as file:
+        for line in file:
+            pattern = r"http(.*)"
+            found = re.search(pattern, line)
+            rep = found.groups()[0]
+            fixed = re.sub(pattern, '"http{0}"'.format(rep), line)
+            with open("./files/fixed_blogpost.yml", 'a') as newFile:
+                newFile.write(fixed)
+
+
+
+
+
 if __name__ == "__main__":
-    if sys.argv[1] == "loadArticles":
-        load_article_data_from_yaml(r"./files/article_data.yml")
-    elif sys.argv[1] == "loadCityData":
-        backload_us_city_data()
+    regex_fix()
+    # if sys.argv[1] == "loadArticles":
+    #     load_article_data_from_yaml(r"./files/article_data.yml")
+    # elif sys.argv[1] == "loadCityData":
+    #     backload_us_city_data()
