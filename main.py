@@ -11,9 +11,12 @@ app = Flask(__name__, static_url_path='/static')
 BASE_URL = "https://api.wayblazer.com/v1/"
 APIKEY = "PEZlargze3A0nyPTBfkP1kQcUw2227Ix"
 HEADERBASE = {"content-type": "application/json", "x-api-key": APIKEY}
-
 YAMLPATH = r"./files/images_cities.yml"
 IMAGETILES = utils.load_imgTiles_from_yaml(YAMLPATH)
+
+ARTICLEPATH = r"./files/article_data.yml"
+ARTICLES = utils.load_article_data_from_yaml(ARTICLEPATH)   # Dictionary of id: article obj
+
 DISTINCTCITIES = utils.get_distinct_cities(IMAGETILES)
 
 DATAFILEPATH = r"./files/data_file.yml"
@@ -58,10 +61,18 @@ def send_font(path):
 
 @app.route('/entrypoint')
 def entrypoint():
-    img_files = []
-    for k, v in IMAGETILES.items():
-        img_files.append({"url": v.url, "id": v.id})
-    return json.dumps(img_files)
+    article_list = []
+    for id, article in ARTICLES.items():
+        article_list.append(article.to_entrypoint_response())
+    return json.dumps(article_list)
+
+
+@app.route('/reload/<thing>')
+def reload_thing(thing):
+    global ARTICLES
+    if thing == "articles":
+        ARTICLES = utils.load_article_data_from_yaml(ARTICLEPATH)
+    return json.dumps({"status_code": "200", "message": "{0} reloaded.".format(thing)})
 
 
 @app.route('/filter', methods=["POST"])
@@ -144,7 +155,6 @@ def build_destinations_response(data):
             destinations[key]["country"] = country
             destinations[key]["concepts"] = attraction.get("concepts")
     return destinations
-
 
 
 def get_typeahead(typeahead):

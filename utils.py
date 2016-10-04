@@ -15,6 +15,18 @@ def get_date_today_string(year_offset=None):
     return now.strftime("%Y-%m-%d")
 
 
+def load_article_data_from_yaml(yaml_path):
+    y_file = load_yaml_data(yaml_path)
+    article_dict = {}
+    count = 0
+    for article in y_file:
+        n_article = models.Article(article.get("linkOut"), article.get("image"), article.get("destination"),
+                                           article.get("displayName"), article.get("concepts"), article.get("text"), count)
+        article_dict[n_article.id] = n_article
+        count += 1
+    return article_dict
+
+
 def load_imgTiles_from_yaml(yaml_path):
     y_file = load_yaml_data(yaml_path)
     image_list = {}
@@ -57,5 +69,8 @@ def get_distinct_cities(img_tiles_dict):
             city = c.split(',')[0].replace(' ', '_').strip()
             cities.append(city)
     return set(cities)
+
+
+
 
 

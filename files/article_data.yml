@@ -1,0 +1,40 @@
+- linkOut: http://www.heynadine.com/crazy-times-in-laos/
+  image: https://c2.staticflickr.com/8/7140/7010628281_a8517c4bad_h.jpg
+  destination: vang_vieng
+  displayName: Vang Vieng, Laos
+  concepts:
+    - fishing
+    - wildlife / outdoors
+    - canoeing
+    - kayaking
+  text: Vang Vieng has pretty much placed itself on the map for backpackers as a major hot spot to visit when traveling around Southeast Asia. Unfortunately, it is for all the wrong reasons.
+
+- linkOut: http://www.heynadine.com/crazy-times-in-laos/
+  image: http://i0.wp.com/www.heynadine.com/wp-content/uploads/2012/03/Hot-Air-Ballon-Laos-5.jpg?
+  destination: vang_vieng
+  displayName: Vang Vieng, Laos
+  concepts:
+      - countryside
+      - hiking
+      - family
+  text: Thanks to my lovely guest vloggers Krista and Chris, I am able to show you the hot air balloon ride in Vang Vieng! I was feeling a bit exhausted and wanted to have a sleep-in day since we had 2 days to spend in Vang Vieng.
+
+- linkOut: http://www.heynadine.com/crazy-times-in-laos/
+  image: www.imageurl.com
+  destination: API expectation of city name
+  displayName: Display friendly city name
+  concepts:
+      - concept1
+      - concept2
+      - concept3
+  text: paragraph from blog post
+
+#- linkOut: http://www.heynadine.com/crazy-times-in-laos/
+#  image: www.imageurl.com
+#  destination: API expectation of city name
+#  displayName: Display friendly city name
+#  concepts:
+#      - concept1
+#      - concept2
+#      - concept3
+#  text: paragraph from blog post
