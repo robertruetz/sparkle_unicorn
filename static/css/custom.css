@@ -1,16 +1,17 @@
-
-
-.faded {
-    opacity: 0.4;
-}
-
 .opaque {
     opacity: 1;
 }
 
-comiseo-daterangepicker-triggerbutton{
-
+.over-text{
+    display: none;
 }
+
+
+.card:hover{
+    -webkit-filter: grayscale; /*sepia, hue-rotate, invert....*/
+    -webkit-filter: brightness(50%);
+}
+
 
 .comiseo-daterangepicker-presets, #number_of_children-button, #number_of_people-button, #drp_autogen0{
 display:none !important;

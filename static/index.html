@@ -40,7 +40,7 @@
     <div class="intro-header">
 		<div class="col-xs-12 text-center abcen1">
 			<h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Wanderlust</h1>
-			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Find Your Dream Destination</h3>
+			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">a curated collection of travel logs</h3>
 		</div>
         <!-- /.container -->
 		<div class="col-xs-12 text-center abcen wow fadeIn">
@@ -237,7 +237,6 @@
                 setTimeout(function(){$("#drp_autogen0").text('Date Range').addClass('ui-button');}, 500)
         });
 
-
 	    function insert_images(start, amount) {
 	        var fixture = {{ article_list }};
             for (i = start; i<(start+amount); i++) {
@@ -247,7 +246,7 @@
                 else{
                    x = i
                 }
-                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img id=' + fixture[x]["id"] + ' class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;></div>'
+                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;><p class="over-text" style="color: white;position: absolute;left: 0;top: 0; padding:10px;" >Test text test text Test text test text Test text test text Test text test text</p></div>'
                 $('#column-view').append(insert);
             }
         }
@@ -271,6 +270,13 @@
 	  });
 
 	  $( "#number_of_people, #number_of_children" ).selectmenu();
+
+	  $('.card').hover(
+          function(){$(this).find( "p" ).css( "display", "block" );},
+          function(){$(this).find( "p" ).css( "display", "none" );}
+	  );
+
+
 	  $('#generate').click(function(){
 
             $.ajax({
@@ -290,8 +296,8 @@
 
        });
 
-      $('.faded, .opaque').click(function(){
-            $(this).toggleClass('faded opaque');
+      $('.card').click(function(){
+            alert("this always works");
 
        });
 	
