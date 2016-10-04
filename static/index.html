@@ -246,7 +246,7 @@
                 else{
                    x = i
                 }
-                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;><div class="over-panel" style="position: absolute; left: 0; top: 0;background-color: black; opacity: 0.5;"> </div><p class="over-text" style="color: white; padding:10px;" >Test text test text Test text test text Test text test text Test text test text</p></div>'
+                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;><div class="over-panel" style="display:none; position: absolute; bottom: 0;right: 0;left: 0; top: 0;background-color: black; opacity: 0.5;"> </div><p class="over-text" style="position: absolute; left: 0; top: 0;color: white; padding:10px; opacity: .8;  " >'+ fixture[x]["text"] + '</p></div>'
                 $('#column-view').append(insert);
             }
         }
@@ -272,8 +272,8 @@
 	  $( "#number_of_people, #number_of_children" ).selectmenu();
 
 	  $('.card').hover(
-          function(){$(this).find( "p" ).css( "display", "block" );},
-          function(){$(this).find( "p" ).css( "display", "none" );}
+          function(){$(this).find( "p, .over-panel" ).css( "display", "block" );},
+          function(){$(this).find( "p, .over-panel" ).css( "display", "none" );}
 	  );
 
 

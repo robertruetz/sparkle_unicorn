@@ -1,3 +1,29 @@
+
+.tint {
+  position: relative;
+  float: left;
+  cursor: pointer;
+}
+
+.tint {
+  background: none;
+}
+
+.tint:hover {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0, 0.5);
+  -moz-transition: background .3s linear;
+  -webkit-transition: background .3s linear;
+  -o-transition: background .3s linear;
+  transition: background .3s linear;
+}
+
 .opaque {
     opacity: 1;
 }
@@ -9,13 +35,20 @@
 .over-shade{
     display: none;
 }
+.over-shade:hover{
+    display: block;
+}
 
 
 
+/*
 .card:hover{
-    -webkit-filter: grayscale; /*sepia, hue-rotate, invert....*/
+    -webkit-filter: grayscale; */
+/*sepia, hue-rotate, invert....*//*
+
     -webkit-filter: brightness(50%);
 }
+*/
 
 
 .comiseo-daterangepicker-presets, #number_of_children-button, #number_of_people-button, #drp_autogen0{
