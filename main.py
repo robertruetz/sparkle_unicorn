@@ -79,6 +79,7 @@ def reload_thing(thing):
 @app.route('/filter', methods=["POST"])
 def filter_route():
     data = request.json
+    print(data)
     ids = data.get("ids", None)
     if ids is None:
         raise Exception
@@ -102,6 +103,7 @@ def filter_route():
     concepts = list(set(concepts))
     response = get_merchandising(data.get("adults"), data.get("children"), data.get("startDate"), data.get("endDate"),
                                  hotels, concepts=concepts)
+    print(response)
     resp_data = build_destinations_response(response.json())
     return json.dumps(resp_data)
 

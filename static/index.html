@@ -281,8 +281,10 @@
 
             $.ajax({
                 type: "POST",
-                url: "http://sparkleunicorn.herokuapp.com/filter",
-                data: {"ids":[1,2,3], "adults": 2, "children": 2, "startDate": "12/12/2013", "endDate": "12/13/2013"},
+                url: "/filter",
+                data: JSON.stringify({"ids":[1,2], "adults": 2, "children": 2, "startDate": "2013-12-12", "endDate": "2013-12-12"}),
+                contentType: "application/json",
+                dataType: "json",
                 }).done(function(data){
                 console.log(data);
                 });
