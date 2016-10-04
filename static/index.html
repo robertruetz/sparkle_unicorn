@@ -239,7 +239,7 @@
 
 
 	    function insert_images(start, amount) {
-	        var fixture = '{{ article_list }}';
+	        var fixture = {{ article_list }};
             for (i = start; i<(start+amount); i++) {
                 if (i > fixture.length-1){
                    x = i % (fixture.length - 1)
@@ -247,7 +247,7 @@
                 else{
                    x = i
                 }
-                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img class="opaque" style="padding: 6px;" src=' + fixture[x]["url"] + ' width=362;></div>'
+                var insert = '<div class="card" style="border-width: 2px;" position: static;"><img id=' + fixture[x]["id"] + ' class="opaque" style="padding: 6px;" src=' + fixture[x]["image"] + ' width=362;></div>'
                 $('#column-view').append(insert);
             }
         }
